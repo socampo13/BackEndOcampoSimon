@@ -57,8 +57,28 @@ app.post("/api/productos/guardar", (request, response) => {
 });
 
 app.get('/', (request, response) => {
-    response.render('/index.ejs');
-})
+    response.render('/index.ejs', {
+        listExists: false,
+        fakeProductos: [{
+            title: "PlayStation 5",
+            price: 500,
+            thumbnail: "https://direct.playstation.com/en-us/consoles/console/playstation5-console.3005816",
+            id: 1
+        },
+        {
+            title: "NVIDIA GEFORCE RTX 3090",
+            price: 1500,
+            thumbnail: "https://assets.nvidia.partners/images/png/nvidia-geforce-rtx-3090.png",
+            id: 2
+        },
+        {
+            title: "Teclado inalámbrico mecánico K63 Corsair",
+            price: 300,
+            thumbnail: "https://www.corsair.com/medias/sys_master/images/images/h1b/h69/9068260327454/-CH-9145050-NA-Gallery-K63-Wireless-SE-01.png",
+            id: 4
+        }]
+    });
+});
 
 app.put("/api/productos/actualizar/:id", (request, response) => {
     const {id} = request.params.id;
