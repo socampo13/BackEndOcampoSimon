@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <title>Formularios de Ingreso</title>
+  </head>
+
+  
+  <body>
+    <form action="/api/productos/guardar" class="needs-validation" novalidate enctype="multipart/form-data" method="POST">
+      <div class="form-row">
+        <div class="col-md-6 mb-3">
+          <label for="validationTooltip01">Nombre del producto</label>
+          <input type="text" class="form-control" id="validationTooltip01" value="Nombre" required>
+          <div class="valid-tooltip">
+            
+          </div>
+        </div>
+        <div class="col-md-6 mb-3">
+          <label for="validationTooltip02">Precio</label>
+          <input type="text" class="form-control" id="validationTooltip02" value="$0000" required>
+          <div class="valid-tooltip">
+            
+          </div>
+        </div>
+        <div class="form-group">
+          <input type="file" name="Single" />
+          <input type="submit" value="Ingresar producto" />
+        </div>
+      </div>
+    </form>
+
+    
+
+
+
+
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+   
+  </body>
+  
+</html>
+
+
+<!--  <form action="/uploadfile" enctype="multipart/form-data" method="GET">
+      <div class="form-group">
+        <input type="file" name="Single" />
+        <input type="submit" value="Subir archivo" />        
+      </div>
+    </form>
+
+    <form action="uploadmultiple" enctype="multipart/form-data" method="POST">
+      <div class="form-group">
+        Imagenes: <input type="file" name="Multi" multiple />
+        <input type="submit" value="Subir archivos" />
+      </div>
+    </form> -->
