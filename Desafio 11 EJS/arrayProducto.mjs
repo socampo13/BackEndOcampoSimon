@@ -22,6 +22,8 @@ server.on('error', error => {
     console.log(error);
 })
 
+//////////////////////////////////////////
+
 app.get("/api/productos/listar", (request, response) => {
     const result = memoria.getArray();
 
