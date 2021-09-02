@@ -1,0 +1,26 @@
+ <form action="/api/productos/guardar" class="needs-validation" novalidate enctype="multipart/form-data" method="POST">
+      <div class="form-row">
+        <div class="col-md-6 mb-3">
+          <label for="validationTooltip01">Nombre del producto</label>
+          <input type="text" class="form-control" id="validationTooltip01" placeholder="Nombre" required>
+          <div class="valid-tooltip">
+            
+          </div>
+        </div>
+        <div class="col-md-6 mb-3">
+          <label for="validationTooltip02">Precio</label>
+          <input type="text" class="form-control" id="validationTooltip02" placeholder="$0000" required>
+          <div class="valid-tooltip">
+            
+          </div>
+        </div>
+        <div class="form-group">
+          <input type="file" name="Single" />
+          <input type="submit" placeholder="Ingresar producto" />
+        </div>
+      </div>
+    </form> 
+
+    <script>
+      const socket = io();
+    </script>

@@ -12,9 +12,20 @@ const __dirname = path.resolve();
 
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
-app.use(express.static('${__dirname}/public'));
+/* app.use(express.static('${__dirname}/public')); */
 app.use('/api', router);
-app.set("view engine", ejs);
+
+app.set('views', '/views')
+app.set('partials','/partials')
+//app.set("view engine", ejs);
+app.set("view engine", 'hbs');
+app.engine('hbs',
+handlebars({
+    extname: '.hbs',
+    defaultLayout: 'index.hbs',
+    layoutsDir: __dirname + '/views/pages'
+    })
+);
 
 http.listen(Port, () => {
     console.log("El servidor se está escuchando en el puerto 8080");
@@ -35,6 +46,10 @@ socket.on('Nuevo usuario', data => {
 });
 
 //////////////////////////////////////////
+
+app.get('/', (request, response) => {
+    response.render('main.hbs')
+})
 
 app.get("/api/productos/listar", (request, response) => {
     const result = memoria.getArray();
