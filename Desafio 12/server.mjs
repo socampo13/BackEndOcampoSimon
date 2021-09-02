@@ -1,10 +1,14 @@
 import express, { request, response } from 'express';
 import { Memoria } from './Memoria.mjs';
 import path from 'path';
+import http from 'http';
+import io from 'socket.io';
 
 const express = require('express'), io = require('socket.io')(http);
 const app = express();
 const http = require('http').Server(app);
+const server = http.Server(app);
+const ioServer = socketIo(server);
 const Port = 8080;
 const memoria = new Memoria();
 const router = express.Router();
@@ -27,22 +31,22 @@ handlebars({
     })
 );
 
-http.listen(Port, () => {
-    console.log("El servidor se está escuchando en el puerto 8080");
+server.listen(Port, error  => {
+    if (error) {
+        throw Error(`Error iniciando el servidor: ${error}`);
+    }
+    console.log("Server listening on port ${Port}");
 });
 
-server.on('error', error => {
-    console.log(error);
-})
+
 
 ///////////////WEB SOCKET
 
-io.on('connection', (socket) => {
-    console.log('Usuario conectado');
-    socket.emit('Nuevo usuario','Usuario conectado')
-})
-socket.on('Nuevo usuario', data => {
-    console.log(data);
+io.sockets.on('connection', (socket) => {
+    console.log('Gracias');
+    socket.on('prueba', (data) => {
+       io.sockets.emit('carga producto', data)
+    });
 });
 
 //////////////////////////////////////////
@@ -120,6 +124,8 @@ app.put("/api/productos/actualizar/:id", (request, response) => {
 app.delete("/api/productos/borrar/:id", (request, response) => {
     Memoria.deleteById(request.body.id)
 });
+
+
 
 
 
