@@ -42,12 +42,40 @@ server.listen(Port, error  => {
 
 ///////////////WEB SOCKET
 
+
+
+const messages = [
+    {
+        author: "Simón",
+        text: "¡Bienvenidos!",
+    },
+    {
+        author: "Laura",
+        text: "¡Esperamos que encuentres todo lo que necesitas!",
+    },
+    {
+        author: "Tienda",
+        text: "Trabajamos para darte el mejor servicio",
+    },
+];
+
 io.sockets.on('connection', (socket) => {
     console.log('Gracias');
     socket.on('prueba', (data) => {
        io.sockets.emit('carga producto', data)
     });
 });
+
+io.Server.on("connection", (socket) => {
+    console.log("Nuevo cliente conectado");
+    socket.emit("messages", messages);
+
+    socket.on("new-message", (data) => {
+        messages.push(data);
+        ioServer.sockets.emit("messages", messages);
+    });
+});
+
 
 //////////////////////////////////////////
 
