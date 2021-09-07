@@ -15,7 +15,7 @@ const memoria = new Memoria();
 const router = express.Router();
 const io = new SocketIo.Server(server);
 //const __dirname = path.resolve();
-/* const io = new Server(httpServer) */
+
 
 //////////////////////////////////////////////////////////////////
 
