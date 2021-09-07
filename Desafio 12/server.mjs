@@ -1,6 +1,6 @@
 import express from 'express';
 import { Memoria } from './Memoria.mjs';
-import path from 'path';
+//import path from 'path';
 import http from 'http';
 import * as SocketIo from 'socket.io'; 
 import { Server } from 'socket.io'
@@ -9,12 +9,13 @@ import { Server } from 'socket.io'
 
 const app = express(); 
 const server = http.Server(app); 
-const ioServer = SocketIo(server);
+const ioServer = new Server(server);
 const Port = 8080;
 const memoria = new Memoria();
 const router = express.Router();
-const __dirname = path.resolve();
-const io = new Server(httpServer)
+const io = new SocketIo.Server(server);
+//const __dirname = path.resolve();
+/* const io = new Server(httpServer) */
 
 //////////////////////////////////////////////////////////////////
 
