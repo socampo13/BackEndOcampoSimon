@@ -1,18 +1,22 @@
-import express, { request, response } from 'express';
+import express from 'express';
 import { Memoria } from './Memoria.mjs';
 import path from 'path';
 import http from 'http';
-import io from 'socket.io';
+import * as SocketIo from 'socket.io'; 
+import { Server } from 'socket.io'
 
-const express = require('express'), io = require('socket.io')(http);
-const app = express();
-const http = require('http').Server(app);
-const server = http.Server(app);
-const ioServer = socketIo(server);
+///////////////////////////////////////////////
+
+const app = express(); 
+const server = http.Server(app); 
+const ioServer = SocketIo(server);
 const Port = 8080;
 const memoria = new Memoria();
 const router = express.Router();
 const __dirname = path.resolve();
+const io = new Server(httpServer)
+
+//////////////////////////////////////////////////////////////////
 
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
@@ -23,13 +27,15 @@ app.set('views', '/views')
 app.set('partials','/partials')
 //app.set("view engine", ejs);
 app.set("view engine", 'hbs');
-app.engine('hbs',
+/* app.engine('hbs',
 handlebars({
     extname: '.hbs',
     defaultLayout: 'index.hbs',
     layoutsDir: __dirname + '/views/pages'
     })
-);
+); */
+
+///////////////////////////////////////////////////////
 
 server.listen(Port, error  => {
     if (error) {
@@ -38,11 +44,7 @@ server.listen(Port, error  => {
     console.log("Server listening on port ${Port}");
 });
 
-
-
 ///////////////WEB SOCKET
-
-
 
 const messages = [
     {
@@ -75,6 +77,10 @@ io.Server.on("connection", (socket) => {
         ioServer.sockets.emit("messages", messages);
     });
 });
+
+
+
+
 
 
 //////////////////////////////////////////
