@@ -42,7 +42,7 @@ server.listen(Port, error  => {
     if (error) {
         throw Error(`Error iniciando el servidor: ${error}`);
     }
-    console.log("Server listening on port ${Port}");
+    console.log(`Server listening on port ${Port}`);
 });
 
 ///////////////WEB SOCKET
@@ -69,7 +69,7 @@ io.sockets.on('connection', (socket) => {
     });
 });
 
-io.Server.on("connection", (socket) => {
+io.on("connection", (socket) => {
     console.log("Nuevo cliente conectado");
     socket.emit("messages", messages);
 
@@ -112,6 +112,8 @@ app.get("/api/productos/listar/:id", (request, response) => {
     }
 });
 
+
+//////////Agregamos producto por id////////////////
 app.post("/api/productos/guardar", (request, response) => {
     const producto = request.body;
     if(producto.precio && producto.title && producto.thumbnail){
@@ -148,6 +150,8 @@ app.get('/', (request, response) => {
     });
 });
 
+
+///////////////Actualizamos producto por id///////////
 app.put("/api/productos/actualizar/:id", (request, response) => {
     const {id} = request.params.id;
     const newProduct = request.body;
@@ -156,6 +160,8 @@ app.put("/api/productos/actualizar/:id", (request, response) => {
     response.send(newProduct);
 });
 
+
+//Eliminamos producto por ID////////
 app.delete("/api/productos/borrar/:id", (request, response) => {
     Memoria.deleteById(request.body.id)
 });

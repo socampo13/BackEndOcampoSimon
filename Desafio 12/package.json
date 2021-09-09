@@ -4,16 +4,26 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build": "./node_modules/.bin/tsc",
+    "watch": "./node_modules/.bin/tsc -w",
     "test": "echo \"Error: no test specified\" && exit 1",
+    "ServerES6toJS5": "node_modules/.bin/babel ./server.es6.mjs -o ./server.js -w",
+    "ServerTStoJS5": "node_modules/.bin/tsc -w",
     "start": "node server.mjs"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
     "ejs": "^3.1.6",
     "express": "^4.17.1",
     "handlebars": "^4.7.7",
-    "socket.io": "^4.2.0"
+    "socket.io": "^4.2.0",
+    "typescript": "^4.4.2"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.13"
   }
 }
