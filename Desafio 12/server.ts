@@ -1,5 +1,5 @@
-import express, { request, response } from 'express';
-/* import { Memoria } from "./Memoria.mjs"; */
+import express  from 'express';
+import * as Memoria from './Memoria'; 
 import http from 'http';
 import * as SocketIo from 'socket.io';
 import { Server } from 'socket.io'
@@ -9,9 +9,10 @@ const app = express();
 const server = new http.Server(app);
 const ioServer = new Server(server);
 const Port = 8080;
-const memoria = new Memoria();
+const memoria = new Memoria.Memoria();
 const router = express.Router();
 const io = new SocketIo.Server(server);
+
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
@@ -31,48 +32,12 @@ server.listen(Port, () => {
     console.log(`Server listening on port: ${Port}`);    
 });
 
-class Memoria {
-    static deleteById(id: any) {
-        throw new Error('Method not implemented.');
-    }
-    productos: never[];
+
+interface Memoria {
+    producto: string;
     count: number;
-    array: any;
-    constructor() {
-        this.productos = [];
-        this.count = 0;
-    }
-
-    getArray(){
-        return this.productos;
-    }
-
-    getElementById(id: string){
-        const result = this.productos.filter(el => {
-            return el.id == id;
-        })
-
-        return result;
-    }
-
-    addElement(element: any){
-        this.productos.push({ ...element,id:this.count+1});
-        this.count++;
-        return element;
-    }
-
-    updateElement(element: string | number){
-        this.array[element] = element
-    }
-
-    deleteById(){
-        const deleteProduct = this.productos.findIndex(element => {
-            return element.id == element;
-        })
-        this.productos.splice(deleteProduct, 1)
-    }
 }
-
+const Memory: Array<Memoria.Memoria> = []
 
 interface Message {
     email: string;
@@ -155,7 +120,7 @@ app.put("/api/productos/actualizar/:id", (request, response) => {
 });
 
 app.delete("/api/productos/borrar/:id", (request, response) => {
-    Memoria.deleteById(request.body.id)
+    Memoria.Memoria.deleteById(request.body.id)
 });
 
 

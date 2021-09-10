@@ -1,15 +1,4 @@
 "use strict";
-var __assign = (this && this.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
@@ -34,7 +23,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var express_1 = __importDefault(require("express"));
-/* import { Memoria } from "./Memoria.mjs"; */
+var Memoria = __importStar(require("./Memoria"));
 var http_1 = __importDefault(require("http"));
 var SocketIo = __importStar(require("socket.io"));
 var socket_io_1 = require("socket.io");
@@ -42,7 +31,7 @@ var app = (0, express_1.default)();
 var server = new http_1.default.Server(app);
 var ioServer = new socket_io_1.Server(server);
 var Port = 8080;
-var memoria = new Memoria();
+var memoria = new Memoria.Memoria();
 var router = express_1.default.Router();
 var io = new SocketIo.Server(server);
 app.use(express_1.default.json());
@@ -59,39 +48,7 @@ server.on("error", function (error) {
 server.listen(Port, function () {
     console.log("Server listening on port: " + Port);
 });
-var Memoria = /** @class */ (function () {
-    function Memoria() {
-        this.productos = [];
-        this.count = 0;
-    }
-    Memoria.deleteById = function (id) {
-        throw new Error('Method not implemented.');
-    };
-    Memoria.prototype.getArray = function () {
-        return this.productos;
-    };
-    Memoria.prototype.getElementById = function (id) {
-        var result = this.productos.filter(function (el) {
-            return el.id == id;
-        });
-        return result;
-    };
-    Memoria.prototype.addElement = function (element) {
-        this.productos.push(__assign(__assign({}, element), { id: this.count + 1 }));
-        this.count++;
-        return element;
-    };
-    Memoria.prototype.updateElement = function (element) {
-        this.array[element] = element;
-    };
-    Memoria.prototype.deleteById = function () {
-        var deleteProduct = this.productos.findIndex(function (element) {
-            return element.id == element;
-        });
-        this.productos.splice(deleteProduct, 1);
-    };
-    return Memoria;
-}());
+var Memory = [];
 var messages = [];
 io.sockets.on('connection', function (socket) {
     console.log('Gracias');
@@ -158,5 +115,5 @@ app.put("/api/productos/actualizar/:id", function (request, response) {
     response.send(newProduct);
 });
 app.delete("/api/productos/borrar/:id", function (request, response) {
-    Memoria.deleteById(request.body.id);
+    Memoria.Memoria.deleteById(request.body.id);
 });
