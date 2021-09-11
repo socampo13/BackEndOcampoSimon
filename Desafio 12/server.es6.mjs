@@ -25,8 +25,8 @@ app.use(express.urlencoded({extended:true}));
  app.use(express.static('${__dirname}/public')); 
 app.use('/api', router);
 
-app.set('views', '/views')
-app.set('partials','/partials')
+app.set('views', './views')
+app.set('partials','./partials')
 //app.set("view engine", ejs);
 app.set("view engine", 'hbs');
 app.engine('hbs',
