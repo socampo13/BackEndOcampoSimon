@@ -27,6 +27,8 @@ var Memoria = __importStar(require("./Memoria"));
 var http_1 = __importDefault(require("http"));
 var SocketIo = __importStar(require("socket.io"));
 var socket_io_1 = require("socket.io");
+var path_1 = __importDefault(require("path"));
+var express_handlebars_1 = __importDefault(require("express-handlebars"));
 var app = (0, express_1.default)();
 var server = new http_1.default.Server(app);
 var ioServer = new socket_io_1.Server(server);
@@ -34,12 +36,18 @@ var Port = 8080;
 var memoria = new Memoria.Memoria();
 var router = express_1.default.Router();
 var io = new SocketIo.Server(server);
+var __dirname = path_1.default.resolve();
 app.use(express_1.default.json());
 app.use(express_1.default.urlencoded({ extended: true }));
 app.use('api/', router);
 app.set('views', '/views');
 app.set('partials', '/partials');
 app.set('view engine', 'hbs');
+app.engine('hbs', (0, express_handlebars_1.default)({
+    extname: 'hbs',
+    defaultLayout: 'index.hbs',
+    layoutsDir: __dirname + '/views/pages'
+}));
 server.on("error", function (error) {
     if (error) {
         throw Error("Error iniciando el servidor: " + error);

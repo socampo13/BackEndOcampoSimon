@@ -1,9 +1,10 @@
 import express from 'express';
 import { Memoria } from './Memoria.mjs';
-//import path from 'path';
+import path from 'path';
 import http from 'http';
 import * as SocketIo from 'socket.io'; 
 import { Server } from 'socket.io'
+import handlebars from 'express-handlebars';
 
 ///////////////////////////////////////////////
 
@@ -14,27 +15,27 @@ const Port = 8080;
 const memoria = new Memoria();
 const router = express.Router();
 const io = new SocketIo.Server(server);
-//const __dirname = path.resolve();
+const __dirname = path.resolve();
 
 
 //////////////////////////////////////////////////////////////////
 
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
-/* app.use(express.static('${__dirname}/public')); */
+ app.use(express.static('${__dirname}/public')); 
 app.use('/api', router);
 
 app.set('views', '/views')
 app.set('partials','/partials')
 //app.set("view engine", ejs);
 app.set("view engine", 'hbs');
-/* app.engine('hbs',
+app.engine('hbs',
 handlebars({
     extname: '.hbs',
     defaultLayout: 'index.hbs',
     layoutsDir: __dirname + '/views/pages'
     })
-); */
+);
 
 ///////////////////////////////////////////////////////
 

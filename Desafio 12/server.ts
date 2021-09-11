@@ -2,7 +2,9 @@ import express  from 'express';
 import * as Memoria from './Memoria'; 
 import http from 'http';
 import * as SocketIo from 'socket.io';
-import { Server } from 'socket.io'
+import { Server } from 'socket.io';
+import path from 'path';
+import handlebars from 'express-handlebars';
 
 
 const app = express();
@@ -12,6 +14,7 @@ const Port = 8080;
 const memoria = new Memoria.Memoria();
 const router = express.Router();
 const io = new SocketIo.Server(server);
+const __dirname = path.resolve();
 
 
 app.use(express.json());
@@ -20,6 +23,13 @@ app.use('api/', router);
 app.set('views', '/views');
 app.set('partials', '/partials');
 app.set('view engine', 'hbs');
+app.engine('hbs',
+handlebars({
+    extname: 'hbs',
+    defaultLayout: 'index.hbs',
+    layoutsDir: __dirname + '/views/pages'
+    })
+);
 
 
 server.on("error", (error) => {

@@ -7,8 +7,8 @@
     "build": "./node_modules/.bin/tsc",
     "watch": "./node_modules/.bin/tsc -w",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "ServerES6toJS5": "node_modules/.bin/babel ./server.es6.mjs -o ./server.js -w",
     "ServerTStoJS5": "node_modules/.bin/tsc -w",
+    "ServerES6toJS5": "node_modules/.bin/babel server.es6.mjs -o server.js -w",
     "start": "node server.mjs"
   },
   "keywords": [],
@@ -24,6 +24,7 @@
     "typescript": "^4.4.2"
   },
   "devDependencies": {
-    "@types/express": "^4.17.13"
+    "@types/express": "^4.17.13",
+    "@types/express-handlebars": "^5.3.1"
   }
 }
