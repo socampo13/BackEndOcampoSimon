@@ -31,15 +31,73 @@
         </div>
       </div>
     </form>
-
-
-
+<section>
+  <div class="container">
+    <article id="tablaProductos"></article>
+  </div>
+</section>
+<section>
+  <div class="container">
+    <hr />
+  </div>
+</section>
+<section>
+  <div class="container">
+    <h4 style="color: blue">Mensajes</h4>
+    <form onsubmit="return addMessage()">
+      <div class="form-row">
+        <div class="col-md-5 mb-2">
+          <input type="email" class="form-control" id="email" placeholder="tu e-mail" required/>
+          <hr />
+        </div>
+        <div id="messages"></div>
+        <div class="col-md-5 mt-2">
+          <input type="text" class="form-control" id="texto" placeholder="tu mensaje" />
+        </div>
+      </div>
+      <input type="submit" value="Enviar" class="btn btn-primary mt-2" />
+    </form>
+  </div>
+</section>
 
 
 
 
     <script>
       const socket = io();
+      const hbsTemplate = Handlebars.compile(`
+      <div>
+        <h2>Productos</h2>
+        {{#if productos}}
+        <table class="table">
+          <thead><tr><th>ID</th> <th>TITULO</th> <th>PRECIO</th> <th>THUMBNAIL</th> </tr> </thead>
+          <tbody>
+            {{#each productos}}
+            <tr>
+              <td>
+                {{id}}
+              </td>
+              <td>
+                {{title}}
+              </td>
+              <td>
+                {{price}}
+              </td>
+              <td>
+                <img src="{{thumbnail}} width="50px"></img>
+              </td>
+            </tr>
+            {{/each}}
+          </tbody>
+        </table>
+      {{else}}
+      <h3>(sin productos)</h3>
+      {{/if}}
+      </div>`);
+    socket.on('cargarProductos', data => {
+      const html = hbsTemplate({ productos: data });
+      document.getElementById('tablaProductos').innerHTML = html;
+    });
     </script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>

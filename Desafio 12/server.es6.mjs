@@ -1,5 +1,5 @@
 import express from 'express';
-import { Memoria } from './Memoria.mjs';
+import { Memoria } from './Memoria.es6.mjs';
 import path from 'path';
 import http from 'http';
 import * as SocketIo from 'socket.io'; 
@@ -48,7 +48,7 @@ server.listen(Port, error  => {
 
 ///////////////WEB SOCKET
 
-const messages = [
+/* const messages = [
     {
         author: "Simón",
         text: "¡Bienvenidos!",
@@ -61,7 +61,9 @@ const messages = [
         author: "Tienda",
         text: "Trabajamos para darte el mejor servicio",
     },
-];
+]; */
+
+const messages = [];
 
 io.sockets.on('connection', (socket) => {
     console.log('Gracias');
