@@ -1,0 +1,57 @@
+{{!--  <section>
+ <form onsubmit="return prueba()" class="row g-3 mt-2">
+ {{!-- <form action="/api/productos/guardar" class="needs-validation" novalidate enctype="multipart/form-data" method="POST"> --}}
+      <div class="form-row">
+        <div class="col-md-6 mb-3">
+          <label for="validationTooltip01">Nombre del producto</label>
+          <input type="text" class="form-control" id="validationTooltip01" placeholder="Nombre" required>
+          <div class="valid-tooltip">
+            
+          </div>
+        </div>
+        <div class="col-md-6 mb-3">
+          <label for="validationTooltip02">Precio</label>
+          <input type="text" class="form-control" id="validationTooltip02" placeholder="$0000" required>
+          <div class="valid-tooltip">
+            
+          </div>
+        </div>
+        <div class="form-group">
+          <input type="file" id="validationToolTip03" />
+          <input type="submit" placeholder="Ingresar producto" />
+        </div>
+        <div class="row-1">
+          {{!-- <button type="submit" class="btn btn-primary mb-3">Enviar</button> --}}
+          <input class="btn btn-primary mb-3" type="submit" value="Enviar"  />
+        </div>
+      </div>
+    </form> 
+  </section>
+  <section id="tabla">
+  <section>
+    <h1>Chat</h1>
+    <div id="messages"></div>
+    <form onsubmit="return addMessage()">
+      <input type="text" id="username" placeholder="correo" style="color: mediumblue;, text: bold">
+      <input type="text" id="texto" placeholder="Tu mensaje" style="color: maroon; font-style:italic">
+      <input class="btn btn-primary mb-3"  type="submit" value="Enviar">
+    </form>
+  </section>
+  </section>
+    <script>
+      const socket = io.connect();
+      function prueba() {
+        const producto = {
+          title: document.getElementById('validationToolTip01').value,
+          price: document.getElementById('validationToolTip02').value,
+          thumbnail: document.getElementById('validationToolTip03').value
+        }
+        socket.emit('prueba', 'producto')
+        return false;
+      }
+      socket.on('carga producto', (data) =>{
+        document.getElementById('tabla').innerHTML = `<span>${data.title}</span>`,
+        document.getElementById('tabla').innerHTML = `<span>${data.price}</span>`,
+        document.getElementById('tabla').innerHTML = `<span>${data.thumbnail}</span>`
+      })
+    </script> --}}
