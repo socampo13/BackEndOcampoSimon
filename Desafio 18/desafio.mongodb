@@ -1,0 +1,11 @@
+use prueba
+
+db.items.insertMany([
+    {Nombre:'Fideos', Categoria:'Harina', Stock:'20'},
+    {Nombre:'Leche', Categoria:'Lacteos', Stock:'30'},
+    {Nombre:'Crema', Categoria:'Lacteos', Stock:'15'}
+])
+
+show collections
+
+db.usuarios.find()
