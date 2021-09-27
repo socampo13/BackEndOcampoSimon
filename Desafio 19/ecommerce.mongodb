@@ -1,0 +1,149 @@
+C:\Users\monti\OneDrive\Desktop\BackEndOcampoSimon\Desafio 19>mongosh
+"mongosh" no se reconoce como un comando interno o externo,
+programa o archivo por lotes ejecutable.
+
+C:\Users\monti\OneDrive\Desktop\BackEndOcampoSimon\Desafio 19>mongo
+MongoDB shell version v5.0.3
+connecting to: mongodb://127.0.0.1:27017/?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("a685bf02-9434-4919-9453-a121a8a049f6") }
+MongoDB server version: 5.0.3
+================
+Warning: the "mongo" shell has been superseded by "mongosh",
+which delivers improved usability and compatibility.The "mongo" shell has been deprecated and will be removed in
+an upcoming release.
+We recommend you begin using "mongosh".
+For installation instructions, see
+https://docs.mongodb.com/mongodb-shell/install/
+================
+---
+The server generated these startup warnings when booting:
+        2021-09-21T15:29:39.298-05:00: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+---
+---
+        Enable MongoDB's free cloud-based monitoring service, which will then receive and display
+        metrics about your deployment (disk utilization, CPU, operation statistics, etc).
+
+        The monitoring data will be available on a MongoDB website with a unique URL accessible to you
+        and anyone you share the URL with. MongoDB may use this information to make product
+        improvements and to suggest MongoDB products and deployment options to you.
+
+        To enable free monitoring, run the following command: db.enableFreeMonitoring()
+        To permanently disable this reminder, run the following command: db.disableFreeMonitoring()
+---
+> show databases
+admin      0.000GB
+config     0.000GB
+ecommerce  0.000GB
+local      0.000GB
+prueba     0.000GB
+> use ecommerce
+switched to db ecommerce
+> show collections
+mensajes
+productos
+> show mensajes
+uncaught exception: Error: don't know how to show [mensajes] :
+shellHelper.show@src/mongo/shell/utils.js:1211:11
+shellHelper@src/mongo/shell/utils.js:838:15
+@(shellhelp2):1:1
+> db.mensajes.find()
+> db.mensajes.insertMany([{author: "Simon", text: "Buenas tardes, cómo podemos ayudarte"}, {author: "Laura", text: "Hola, mi pedido no ha llegado"}, {author: "Simon", text: "Revisaremos las guias de envio"}, {author: "Laura", author: "Gracias"}, {author: "Simón", text: "Tu pedido estaría llegando a partir del 1 de Octubre"}, {author: "Laura", text: "Vale, muchas gracias por tu ayuda"}, {author: "Simon", text: "A ti por tu compra, te esperamos de vuelta"}])
+{
+        "acknowledged" : true,
+        "insertedIds" : [
+                ObjectId("61524bc0b83da513b14f6cf8"),
+                ObjectId("61524bc0b83da513b14f6cf9"),
+                ObjectId("61524bc0b83da513b14f6cfa"),
+                ObjectId("61524bc0b83da513b14f6cfb"),
+                ObjectId("61524bc0b83da513b14f6cfc"),
+                ObjectId("61524bc0b83da513b14f6cfd"),
+                ObjectId("61524bc0b83da513b14f6cfe")
+        ]
+}
+> db.productos.insertMany([{title: "Caja cumpleaños pequeña", description:"Caja para cumpleaños pequeña", code: 0001, price: 199, stock: 900, thumbnail: "img1"}, {title: "Caja dia del padre", description: "Caja para celebracion dia del padre", code: 0002, price: 199, stock: 500, thumbnail: "img2"}, {title: "Caja dia de la madre", description: "Caja para celebracion dia de la madre", code: 0003, price: 199, stock: 500, thumbnail: "img3"}, {title: "Caja graduacion colegio", description: "Caja para celebracion de graduacion del colegio", code: 0004, price: 105, stock: 250, thumbnail: "img4"}, {title: "Caja graduacion universidad", description: "Caja para celebracion de graduacion de la universidad", code: 0005, price: 150, stock: 1000, thumbnail: "img5"}, {title: "Caja amor y amistad", description: "Caja para celebracion dia del amor y la amistad", code: 0006, price: 350, stock: 3000, thumbnail: "img6"}, {title: "Caja despedida", description: "Caja para despedir a un viajero", code: 0007, price: 100, stock: 200, thumbnail: "img7"}, {title: "Caja bienvenida", description: "Caja para recibir una visita especial", code: 0008, price: 150, stock: 500, thumbnail: "img8"}, {title: "Caja celebración novios", description: "Caja para celebrar fecha especial de noviazgo", code: 0009, price: 200, stock: 750, thumbnail: "img9"}, {title: "Caja año nuevo", description: "Caja para celebrar año nuevo", code: 0010, price: 400, stock: 500, thumbnail: "img10"}])
+{
+        "acknowledged" : true,
+        "insertedIds" : [
+                ObjectId("61524febb83da513b14f6cff"),
+                ObjectId("61524febb83da513b14f6d00"),
+                ObjectId("61524febb83da513b14f6d01"),
+                ObjectId("61524febb83da513b14f6d02"),
+                ObjectId("61524febb83da513b14f6d03"),
+                ObjectId("61524febb83da513b14f6d04"),
+                ObjectId("61524febb83da513b14f6d05"),
+                ObjectId("61524febb83da513b14f6d06"),
+                ObjectId("61524febb83da513b14f6d07"),
+                ObjectId("61524febb83da513b14f6d08")
+        ]
+}
+> db.mensajes.find()
+{ "_id" : ObjectId("61524bc0b83da513b14f6cf8"), "author" : "Simon", "text" : "Buenas tardes, cómo podemos ayudarte" }
+{ "_id" : ObjectId("61524bc0b83da513b14f6cf9"), "author" : "Laura", "text" : "Hola, mi pedido no ha llegado" }
+{ "_id" : ObjectId("61524bc0b83da513b14f6cfa"), "author" : "Simon", "text" : "Revisaremos las guias de envio" }
+{ "_id" : ObjectId("61524bc0b83da513b14f6cfb"), "author" : "Gracias" }
+{ "_id" : ObjectId("61524bc0b83da513b14f6cfc"), "author" : "Simón", "text" : "Tu pedido estaría llegando a partir del 1 de Octubre" }
+{ "_id" : ObjectId("61524bc0b83da513b14f6cfd"), "author" : "Laura", "text" : "Vale, muchas gracias por tu ayuda" }
+{ "_id" : ObjectId("61524bc0b83da513b14f6cfe"), "author" : "Simon", "text" : "A ti por tu compra, te esperamos de vuelta" }
+> db.productos.find()
+{ "_id" : ObjectId("61524febb83da513b14f6cff"), "title" : "Caja cumpleaños pequeña", "description" : "Caja para cumpleaños pequeña", "code" : 1, "price" : 199, "stock" : 900, "thumbnail" : "img1" }
+{ "_id" : ObjectId("61524febb83da513b14f6d00"), "title" : "Caja dia del padre", "description" : "Caja para celebracion dia del padre", "code" : 2, "price" : 199, "stock" : 500, "thumbnail" : "img2" }
+{ "_id" : ObjectId("61524febb83da513b14f6d01"), "title" : "Caja dia de la madre", "description" : "Caja para celebracion dia de la madre", "code" : 3, "price" : 199, "stock" : 500, "thumbnail" : "img3" }
+{ "_id" : ObjectId("61524febb83da513b14f6d02"), "title" : "Caja graduacion colegio", "description" : "Caja para celebracion de graduacion del colegio", "code" : 4, "price" : 105, "stock" : 250, "thumbnail" : "img4" }
+{ "_id" : ObjectId("61524febb83da513b14f6d03"), "title" : "Caja graduacion universidad", "description" : "Caja para celebracion de graduacion de la universidad", "code" : 5, "price" : 150, "stock" : 1000, "thumbnail" : "img5" }
+{ "_id" : ObjectId("61524febb83da513b14f6d04"), "title" : "Caja amor y amistad", "description" : "Caja para celebracion dia del amor y la amistad", "code" : 6, "price" : 350, "stock" : 3000, "thumbnail" : "img6" }
+{ "_id" : ObjectId("61524febb83da513b14f6d05"), "title" : "Caja despedida", "description" : "Caja para despedir a un viajero", "code" : 7, "price" : 100, "stock" : 200, "thumbnail" : "img7" }
+{ "_id" : ObjectId("61524febb83da513b14f6d06"), "title" : "Caja bienvenida", "description" : "Caja para recibir una visita especial", "code" : 8, "price" : 150, "stock" : 500, "thumbnail" : "img8" }
+{ "_id" : ObjectId("61524febb83da513b14f6d07"), "title" : "Caja celebración novios", "description" : "Caja para celebrar fecha especial de noviazgo", "code" : 9, "price" : 200, "stock" : 750, "thumbnail" : "img9" }
+{ "_id" : ObjectId("61524febb83da513b14f6d08"), "title" : "Caja año nuevo", "description" : "Caja para celebrar año nuevo", "code" : 8, "price" : 400, "stock" : 500, "thumbnail" : "img10" }
+> db.productos.insertOne({title: "Caja felicidad", description: "Caja para alegrar el dia de alguien", code: 0011, price: 100, stock: 1000, thumbnail: "img11"})
+{
+        "acknowledged" : true,
+        "insertedId" : ObjectId("61525063b83da513b14f6d09")
+}
+> db.productos.find({price: {$lt: 1000}})
+{ "_id" : ObjectId("61524febb83da513b14f6cff"), "title" : "Caja cumpleaños pequeña", "description" : "Caja para cumpleaños pequeña", "code" : 1, "price" : 199, "stock" : 900, "thumbnail" : "img1" }
+{ "_id" : ObjectId("61524febb83da513b14f6d00"), "title" : "Caja dia del padre", "description" : "Caja para celebracion dia del padre", "code" : 2, "price" : 199, "stock" : 500, "thumbnail" : "img2" }
+{ "_id" : ObjectId("61524febb83da513b14f6d01"), "title" : "Caja dia de la madre", "description" : "Caja para celebracion dia de la madre", "code" : 3, "price" : 199, "stock" : 500, "thumbnail" : "img3" }
+{ "_id" : ObjectId("61524febb83da513b14f6d02"), "title" : "Caja graduacion colegio", "description" : "Caja para celebracion de graduacion del colegio", "code" : 4, "price" : 105, "stock" : 250, "thumbnail" : "img4" }
+{ "_id" : ObjectId("61524febb83da513b14f6d03"), "title" : "Caja graduacion universidad", "description" : "Caja para celebracion de graduacion de la universidad", "code" : 5, "price" : 150, "stock" : 1000, "thumbnail" : "img5" }
+{ "_id" : ObjectId("61524febb83da513b14f6d04"), "title" : "Caja amor y amistad", "description" : "Caja para celebracion dia del amor y la amistad", "code" : 6, "price" : 350, "stock" : 3000, "thumbnail" : "img6" }
+{ "_id" : ObjectId("61524febb83da513b14f6d05"), "title" : "Caja despedida", "description" : "Caja para despedir a un viajero", "code" : 7, "price" : 100, "stock" : 200, "thumbnail" : "img7" }
+{ "_id" : ObjectId("61524febb83da513b14f6d06"), "title" : "Caja bienvenida", "description" : "Caja para recibir una visita especial", "code" : 8, "price" : 150, "stock" : 500, "thumbnail" : "img8" }
+{ "_id" : ObjectId("61524febb83da513b14f6d07"), "title" : "Caja celebración novios", "description" : "Caja para celebrar fecha especial de noviazgo", "code" : 9, "price" : 200, "stock" : 750, "thumbnail" : "img9" }
+{ "_id" : ObjectId("61524febb83da513b14f6d08"), "title" : "Caja año nuevo", "description" : "Caja para celebrar año nuevo", "code" : 8, "price" : 400, "stock" : 500, "thumbnail" : "img10" }
+{ "_id" : ObjectId("61525063b83da513b14f6d09"), "title" : "Caja felicidad", "description" : "Caja para alegrar el dia de alguien", "code" : 9, "price" : 100, "stock" : 1000, "thumbnail" : "img11" }
+> db.productos.find( {$and: [{price: {$gt: 100}}, {price: {$lt: 300}}]})
+{ "_id" : ObjectId("61524febb83da513b14f6cff"), "title" : "Caja cumpleaños pequeña", "description" : "Caja para cumpleaños pequeña", "code" : 1, "price" : 199, "stock" : 900, "thumbnail" : "img1" }
+{ "_id" : ObjectId("61524febb83da513b14f6d00"), "title" : "Caja dia del padre", "description" : "Caja para celebracion dia del padre", "code" : 2, "price" : 199, "stock" : 500, "thumbnail" : "img2" }
+{ "_id" : ObjectId("61524febb83da513b14f6d01"), "title" : "Caja dia de la madre", "description" : "Caja para celebracion dia de la madre", "code" : 3, "price" : 199, "stock" : 500, "thumbnail" : "img3" }
+{ "_id" : ObjectId("61524febb83da513b14f6d02"), "title" : "Caja graduacion colegio", "description" : "Caja para celebracion de graduacion del colegio", "code" : 4, "price" : 105, "stock" : 250, "thumbnail" : "img4" }
+{ "_id" : ObjectId("61524febb83da513b14f6d03"), "title" : "Caja graduacion universidad", "description" : "Caja para celebracion de graduacion de la universidad", "code" : 5, "price" : 150, "stock" : 1000, "thumbnail" : "img5" }
+{ "_id" : ObjectId("61524febb83da513b14f6d06"), "title" : "Caja bienvenida", "description" : "Caja para recibir una visita especial", "code" : 8, "price" : 150, "stock" : 500, "thumbnail" : "img8" }
+{ "_id" : ObjectId("61524febb83da513b14f6d07"), "title" : "Caja celebración novios", "description" : "Caja para celebrar fecha especial de noviazgo", "code" : 9, "price" : 200, "stock" : 750, "thumbnail" : "img9" }
+> db.productos.find({price: {$gt: 300}})
+{ "_id" : ObjectId("61524febb83da513b14f6d04"), "title" : "Caja amor y amistad", "description" : "Caja para celebracion dia del amor y la amistad", "code" : 6, "price" : 350, "stock" : 3000, "thumbnail" : "img6" }
+{ "_id" : ObjectId("61524febb83da513b14f6d08"), "title" : "Caja año nuevo", "description" : "Caja para celebrar año nuevo", "code" : 8, "price" : 400, "stock" : 500, "thumbnail" : "img10" }
+> db.productos.find({}), {$set: {"stock": 100}}, {multi: true})
+uncaught exception: SyntaxError: unexpected token: ')' :
+@(shell):1:60
+> db.productos.find({}).sort({price: 1}).skip(2).limit(1)
+{ "_id" : ObjectId("61524febb83da513b14f6d02"), "title" : "Caja graduacion colegio", "description" : "Caja para celebracion de graduacion del colegio", "code" : 4, "price" : 105, "stock" : 250, "thumbnail" : "img4" }
+> db.productos.update({}, {$set:{"stock": 100}}, {multi: true})
+WriteResult({ "nMatched" : 11, "nUpserted" : 0, "nModified" : 11 })
+> db.productos.update({price: {$gt: 400}}, {$set:{"stock":0}}, {multi: true})
+WriteResult({ "nMatched" : 0, "nUpserted" : 0, "nModified" : 0 })
+> db.productos.deleteMany({price: {$lt: 1000}})
+{ "acknowledged" : true, "deletedCount" : 11 }
+> use admin
+switched to db admin
+> db.createUser({user: "pepe", pwd: "asd456", roles:[{role: "read", db: "ecommerce"}]})
+Successfully added user: {
+        "user" : "pepe",
+        "roles" : [
+                {
+                        "role" : "read",
+                        "db" : "ecommerce"
+                }
+        ]
+}
+>
