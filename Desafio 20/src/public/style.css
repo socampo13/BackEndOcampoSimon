@@ -1,0 +1,39 @@
+body {
+    background-color: rgb(255, 255, 255);
+}
+
+.chat {
+    background-color: #F8D7DA;
+}
+
+.form-chat {
+    width: 20rem;
+}
+
+.submit-form {
+    width: 10rem;
+}
+
+.author{
+    color: #3700ff;
+}
+
+.author-text{
+    font-family: italic;
+    color: #205e23;
+}
+
+.date-chat {
+    color: #572e2e;
+}
+
+.btn-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.btn-volver {
+    padding:10px;
+    margin-top: 20px;
+    font-size: 2rem;
+}

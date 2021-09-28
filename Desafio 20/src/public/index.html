@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous" />
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"
+        integrity="sha512-RNLkV3d+aLtfcpEyFG8jRbnWHxUqVZozacROI4J2F1sTaDqo1dPQYs01OMi1t1w9Y2FdbSCDSQ2ZVdAC8bzgAg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="./js/index.js"></script>
+    <title>Document</title>
+
+</head>
+
+<body>
+    <div class="container">
+
+        <a href="/cart" class="btn btn-dark btn-volver">Carrito</a>
+
+        <h1>Ingrese un producto:</h1>
+        <form action="/products/save" method="POST" class="row g-3 mt-2">
+            <div class="col-auto">
+                <label for="title" class="form-label">Nombre</label>
+                <input type="text" name="title" class="form-control" />
+            </div>
+            <div class="col-auto">
+                <label for="description" class="form-label">Descripcion</label>
+                <input type="text" name="description" class="form-control" />
+            </div>
+            <div class="col-auto">
+                <label for="code" class="form-label">Codigo</label>
+                <input type="number" name="code" class="form-control" />
+            </div>
+            <div class="col-auto">
+                <label for="price" class="form-label">Precio</label>
+                <input type="number" name="price" class="form-control" />
+            </div>
+            <div class="col-auto">
+                <label for="stock" class="form-label">Stock</label>
+                <input type="number" name="stock" class="form-control" />
+            </div>
+            <div class="col-auto">
+                <label for="thumbnail" class="form-label">Imagen</label>
+                <input type="text" name="thumbnail" class="form-control" />
+            </div>
+            <div class="row-1">
+                <button type="submit" class="btn btn-primary mb-3">Enviar</button>
+            </div>
+        </form>
+
+        <div id="table-template">
+        </div>
+
+        <div class="chat mt-4">
+            <h2 class="p-4">Centro de Mensajes</h2>
+            <form class="p-4" onsubmit="return addMessage()">
+                <input type="text" class="form-control form-chat mb-4" id="username" placeholder="Ingrese su email" />
+                <div id="messages"></div>
+                <input type="text" class="form-control form-chat mt-4" id="texto" placeholder="Ingrese su mensaje" />
+                <input type="submit" class="form-control submit-form btn btn-primary mt-2" value="Enviar" />
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
