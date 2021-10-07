@@ -77,7 +77,7 @@ io.on ("connection", (socket) => {
 });
 
 //Router products faker.js
-const id = 0;
+
 routerProducts.get("productos/vista-test", (req, res) => {
     const array = [];
     const quantity = Number(req.query.quantity);
