@@ -1,0 +1,47 @@
+{
+  "name": "final_backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.mjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon src/server.mjs",
+    "tsc": "node_modules/.bin/tsc",
+    "start": "nodemon src/server.mjs",
+    "mongo": "mongod --dbpath db"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/socampo13/Final_BackEnd.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/socampo13/Final_BackEnd/issues"
+  },
+  "homepage": "https://github.com/socampo13/Final_BackEnd#readme",
+  "dependencies": {
+    "@types/express": "^4.17.13",
+    "@types/express-handlebars": "^5.3.1",
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "connect-flash": "^0.1.1",
+    "express": "^4.17.1",
+    "express-handlebars": "^5.3.4",
+    "faker": "^5.5.3",
+    "firebase": "^9.1.1",
+    "firebase-admin": "^9.12.0",
+    "handlebars": "^4.7.7",
+    "knex": "^0.95.11",
+    "mongoose": "^6.0.8",
+    "mysql": "^2.18.1",
+    "node-ts": "^5.1.2",
+    "nodemon": "^2.0.13",
+    "passport": "^0.4.1",
+    "rxjs": "^7.3.0",
+    "socket.io": "^4.2.0",
+    "sqlite3": "^5.0.2",
+    "typescript": "^4.4.3"
+  }
+}
