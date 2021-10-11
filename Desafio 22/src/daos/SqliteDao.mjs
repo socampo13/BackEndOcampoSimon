@@ -4,9 +4,9 @@ import knex from 'knex';
 
 export class SqliteDao{
     constructor(){
-        products: SqliteDao;
-        count: number;
-        id: number;
+         /* products = FileSystemDao;
+        count = number;
+        id = number; */
 
         this.products = [];
         this.id = 1;

@@ -6,9 +6,9 @@ const __dirname = path.resolve();
 
 export class FileSystemDao{
     constructor(){
-        products = FileSystemDao;
+        /* products = FileSystemDao;
         count = number;
-        id = number;
+        id = number; */
 
         this.products = [];
         this.count = 1;

@@ -4,9 +4,9 @@ import { ProductSchema } from '../models/mongodb.mjs';
 
 export class MongoDbaaSDao{
     constructor(){
-        products: MongoDbaaSDao;
-        count: number;
-        id: number;
+         /* products = FileSystemDao;
+        count = number;
+        id = number; */
 
         this.products = [];
         this.id = 1;

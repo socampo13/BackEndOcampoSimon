@@ -14,10 +14,9 @@ const collection = db.collection("products");
 
 export class FirebaseDao{
     constructor(){
-        products: FirebaseDao;
-        count: number;
-        id: number;
-
+         /* products = FileSystemDao;
+        count = number;
+        id = number; */
         this.products = [];
         this.id = 1;
         this.count = 1;
