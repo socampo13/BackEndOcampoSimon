@@ -50,13 +50,13 @@ app.get("/carrito", (req, res) => {
     res.sendFile(`${__dirname}/src/public/html/cart.html`);
 });
 
-const message = [
+/* const message = [
     {
         author: " ",
         date: " ",
         text: " ",
     },
-];
+]; */
 
 const normalizeMessages = (() => {
     const authorSchema = new schema.Entity("author", {}, { idAttribute: "email" });
