@@ -39,6 +39,7 @@
     "mysql": "^2.18.1",
     "node-ts": "^5.1.2",
     "nodemon": "^2.0.13",
+    "normalizr": "^3.6.1",
     "passport": "^0.4.1",
     "rxjs": "^7.3.0",
     "socket.io": "^4.2.0",

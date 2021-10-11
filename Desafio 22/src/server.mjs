@@ -4,6 +4,8 @@ import express, { response } from 'express';
 import path from 'path';
 import faker from 'faker';
 import * as socketIo from 'socket.io';
+import { normalize, schema } from 'normalizr';
+import util from 'util';
 
 const admin = true;
 const port = 8080;
@@ -56,6 +58,20 @@ const message = [
     },
 ];
 
+const normalizeMessages = (() => {
+    const authorSchema = new schema.Entity("author", {}, { idAttribute: "email" });
+    const messagesSchema = new schema.Entity("messages",
+    {
+        author: authorSchema,
+    },
+    { idAttribute: "date" }
+    );
+    const postSchema = new schema.Array(messagesSchema);
+
+    normalizeMessages = normalize(messages, postSchema);
+    console.log(util.inspect(normalizeMessages, false, 12, true));
+})();
+
 io.on ("connection", (socket) => {
     const productsTemplate = dao.getProducts();
 
@@ -67,11 +83,12 @@ io.on ("connection", (socket) => {
     socket.emit("addToCart", cartTemplate);
     console.log("Online");
 
-    socket.emit("messages", messages);
+    socket.emit("messages", normalizeMessages);
 
     socket.on("new-message", (data) => {
         messages.push(data);
-        io.sockets.emit("messages", messages);
+        normalizeMessages();
+        io.sockets.emit("messages", normalizeMessages);
     });
     
 });
