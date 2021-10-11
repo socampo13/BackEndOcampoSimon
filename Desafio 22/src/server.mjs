@@ -42,7 +42,7 @@ const dao = daoFactory.getDao(FileSystemDao);
 const io = new socketIo.Server(server);
 
 app.get("/", (req, res) => {
-    res.sendFile(`${__dirname}/'src/public/index.html`)
+    res.sendFile(`${__dirname}/src/public/index.html`)
 });
 app.get("/carrito", (req, res) => {
     res.sendFile(`${__dirname}/src/public/html/cart.html`);
