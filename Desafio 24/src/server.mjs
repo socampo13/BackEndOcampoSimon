@@ -6,6 +6,10 @@ import faker from 'faker';
 import * as socketIo from 'socket.io';
 import { normalize, schema } from 'normalizr';
 import util from 'util';
+import cookieParser from 'cookie-parser';
+import session from 'express-session';
+import bodyParser from 'body-parser';
+import handlebars from 'express-handlebars';
 
 const admin = true;
 const port = 8080;
@@ -15,9 +19,17 @@ const routerCart = express.Router();
 const __dirname = path.resolve();
 faker.locale = "es";
 
-app.unsubscribe(express.static(`${__dirname}/src/public`));
+app.unsubscribe(express.static(`${__dirname}/src/views`));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.set("view-engine", 'hbs');
+app.engine('hbs',
+handlebars({
+    extname: '.hbs',
+    defaultLayout: 'index.hbs',
+    layoutsDir: __dirname + '/views'
+})
+);
 
 const server = app.listen(port, () => {
     console.log(`Server running on port ${port}`);
@@ -39,6 +51,67 @@ const FirebaseDao = 6;
 const daoFactory = new DaoFactory();
 const dao = daoFactory.getDao(FileSystemDao);
 
+// LOGIN LOGOUT
+
+app.use(cookieParser());
+app.use(session({
+    secret:"holamundo",
+    cookie: { maxAge: 1000 },
+    saveUninitialized: true,
+    resave: true,
+}));
+
+const logged = {
+    isLogged: false,
+    isTimeOut: false,
+    isDestroyed: false,
+    name: "",
+};
+
+app.get("/", (req, res) => {
+    const body = req.body;
+    if(!req.session.nombre && logged.isLogged){
+        logged.isLogged = false;
+        logged.isTimeOut = true;
+        res.render(`${__dirname}/src/views/index.hbs`, { login: logged });
+        logged.isTimeOut = false;
+        logged.name = "";
+    }
+    if(!req.session.name){
+        console.log("You're not logged in", body.name);
+        res.render(`${__dirname}/src/views/index.hbs`, { login: logged });
+        console.log("Not logged in");
+    }else{
+        logged.isLogged = true;
+        logged.name = req.session.name;
+        res.render(`${__dirname}/src/views/main.hbs`, { nombre: logged });
+    }
+});
+
+app.post("/login", (req, res) => {
+    const body = req.body;
+    if(body.name){
+        req.session.name = body.name;
+        logged.name = req.body.name;
+        logged.isLogged = true;
+        res.redirect("/");
+    }
+});
+
+app.post("/logout", (req, res) => {
+    req.session.destroy;
+    logged.isLogged = false;
+    logged.isDestroyed = true;
+    res.redirect("/");
+});
+
+const authenticate = (req, res, next) => {
+    if(req.session.name = logged.name){
+        return next();
+    }else{
+        return res.sendStatus(401);
+    }
+};
 
 // Web socket
 const io = new socketIo.Server(server);
@@ -50,15 +123,17 @@ app.get("/carrito", (req, res) => {
     res.sendFile(`${__dirname}/src/public/html/cart.html`);
 });
 
-/* const message = [
+ const message = [
     {
         author: " ",
         date: " ",
         text: " ",
     },
-]; */
+]; 
 
-const normalizeMessages = (() => {
+
+
+const proccessMessages = (() => {
     const authorSchema = new schema.Entity("author", {}, { idAttribute: "email" });
     const messagesSchema = new schema.Entity("messages",
     {
@@ -69,8 +144,9 @@ const normalizeMessages = (() => {
     const postSchema = new schema.Array(messagesSchema);
 
     normalizeMessages = normalize(messages, postSchema);
-    console.log(util.inspect(normalizeMessages, false, 12, true));
-})();
+    const normalizedLength = JSON.stringify(normalizeMessages).length;
+
+});
 
 io.on ("connection", (socket) => {
     const productsTemplate = dao.getProducts();
@@ -87,7 +163,7 @@ io.on ("connection", (socket) => {
 
     socket.on("new-message", (data) => {
         messages.push(data);
-        normalizeMessages();
+        proccessMessages();
         io.sockets.emit("messages", normalizeMessages);
     });
     
