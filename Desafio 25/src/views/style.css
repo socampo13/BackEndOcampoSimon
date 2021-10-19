@@ -1,0 +1,111 @@
+body {
+    background-color: #E0E0E0;
+    margin: 0;
+    padding: 0;
+}
+
+.chat {
+    background-color: #F8D7DA;
+}
+
+.form-chat {
+    width: 20rem;
+}
+
+.submit-form {
+    width: 10rem;
+}
+
+.author{
+    color: #3700ff;
+}
+
+.author-text{
+    font-family: italic;
+    color: #205e23;
+}
+
+.date-chat {
+    color: #572e2e;
+}
+
+.btn-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.btn-volver {
+    padding:10px;
+    margin-top: 20px;
+    font-size: 2rem;
+}
+
+h2 {
+    font-size:1.2rem;
+    text-align: center;
+}
+
+.formulario {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.container-form{
+    border: 1px outset rgba(0, 0, 0, 0.49);
+    border-radius: 5px 5px 5px 5px;
+    width: 400px;
+    background-color: #fff;
+}
+
+.container-general {
+    margin-top:50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: space-between;
+}
+
+.container-chat{
+    border: 1px outset rgba(0, 0, 0, 0.49);
+    border-radius: 5px 5px 5px 5px;
+    width: 500px;
+    height: 100%;
+    min-height:500px;
+    background-color: #fff;
+}
+
+#messages{
+    margin-top:10px;
+}
+
+footer{
+    height:80px;
+    background-color: #000000;
+}
+
+.derechos{
+    color: #E0E0E0;
+    text-align:center;
+}
+
+.container-foot{
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-end;
+    align-items: center;
+}
+
+.no-productos{
+    font-size:2rem;
+}
+
+.container-table{
+    margin-top:50px;
+}
+.table-title{
+    font-size:2rem;
+    text-align:left;
+    margin-bottom:10px;
+}

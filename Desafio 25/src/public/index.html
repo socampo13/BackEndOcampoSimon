@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous" />
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"
+        integrity="sha512-RNLkV3d+aLtfcpEyFG8jRbnWHxUqVZozacROI4J2F1sTaDqo1dPQYs01OMi1t1w9Y2FdbSCDSQ2ZVdAC8bzgAg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/8b15835689.js" crossorigin="anonymous"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="./js/index.js"></script>
+    <title>Make it happen</title>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-dark bg-dark">
+            <div class="container-fluid">
+                <span class="navbar-brand mb-0 h1">Make it happen store</span>
+            </div>
+        </nav>
+
+        <h1 class="text-center mt-4">Bienvenido <i class="icon-hand far fa-hand-point-left"></i></h1>
+    </header>
+    <div class="container">
+        <!--<a href="/carrito" class="btn btn-dark btn-volver">Carrito</a>-->
+        <div class="container-general">
+            <div class="container-form">
+                <h2 class="mt-4">Agregar productos a la base de datos:</h2>
+                <form action="/productos/guardar" method="POST" class="formulario row g-3 mt-2">
+                    <div class="col-auto">
+                        <label for="title" class="form-label">Nombre</label>
+                        <input type="text" name="title" class="form-control" />
+                    </div>
+                    <div class="col-auto">
+                        <label for="description" class="form-label">Descripcion</label>
+                        <input type="text" name="description" class="form-control" />
+                    </div>
+                    <div class="col-auto">
+                        <label for="code" class="form-label">Codigo</label>
+                        <input type="number" name="code" class="form-control" />
+                    </div>
+                    <div class="col-auto">
+                        <label for="price" class="form-label">Precio</label>
+                        <input type="number" name="price" class="form-control" />
+                    </div>
+                    <div class="col-auto">
+                        <label for="stock" class="form-label">Stock</label>
+                        <input type="number" name="stock" class="form-control" />
+                    </div>
+                    <div class="col-auto">
+                        <label for="thumbnail" class="form-label">Url de la Imagen</label>
+                        <input type="text" name="thumbnail" class="form-control" />
+                    </div>
+                    <div class="col-auto">
+                        <button type="submit" class="btn btn-dark mb-3">Enviar</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="container-chat chat">
+                <h2 class="p-4">Centro de Mensajes</h2>
+                <form class="p-4" onsubmit="return addMessage()">
+                    <input type="text" class="form-control form-chat mb-4" id="username"
+                        placeholder="Ingrese su email" />
+
+                    <input type="text" class="form-control form-chat mt-4" id="texto"
+                        placeholder="Ingrese su mensaje" />
+                    <input type="submit" class="form-control submit-form btn btn-dark mt-2" value="Enviar" />
+                    <div id="messages"></div>
+                </form>
+            </div>
+        </div>
+
+        <div id="table-template" class="mt-8rs mb-4">
+        </div>
+    </div>
+
+    <footer>
+        <div class="container-foot">
+            <p class="derechos mt-4">Todos los derechos reservados @2021</p>
+        </div>
+    </footer>
+</body>
+</html>

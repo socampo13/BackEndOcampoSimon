@@ -1,0 +1,57 @@
+{
+  "name": "final_backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.mjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon src/server.mjs",
+    "tsc": "node_modules/.bin/tsc",
+    "start": "nodemon src/server.mjs",
+    "mongo": "mongod --dbpath db"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/socampo13/Final_BackEnd.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/socampo13/Final_BackEnd/issues"
+  },
+  "homepage": "https://github.com/socampo13/Final_BackEnd#readme",
+  "dependencies": {
+    "@types/cookie-parser": "^1.4.2",
+    "@types/express": "^4.17.13",
+    "@types/express-handlebars": "^5.3.1",
+    "@types/express-session": "^1.17.4",
+    "@types/faker": "^5.5.9",
+    "@types/session-file-store": "^1.2.2",
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "connect-flash": "^0.1.1",
+    "connect-mongo": "^4.6.0",
+    "cookie-parser": "^1.4.5",
+    "eslint": "^8.0.0",
+    "express": "^4.17.1",
+    "express-handlebars": "^5.3.4",
+    "express-session": "^1.17.2",
+    "faker": "^5.5.3",
+    "firebase": "^9.1.1",
+    "firebase-admin": "^9.12.0",
+    "handlebars": "^4.7.7",
+    "knex": "^0.95.11",
+    "mongoose": "^6.0.8",
+    "mysql": "^2.18.1",
+    "node-ts": "^5.1.2",
+    "nodemon": "^2.0.13",
+    "normalizr": "^3.6.1",
+    "passport": "^0.4.1",
+    "rxjs": "^7.3.0",
+    "session-file-store": "^1.5.0",
+    "socket.io": "^4.2.0",
+    "sqlite3": "^5.0.2",
+    "typescript": "^4.4.3"
+  }
+}
