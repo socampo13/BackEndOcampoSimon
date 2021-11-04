@@ -42,6 +42,7 @@ if(allArguments.s == "cluster"){
         initWsServer(myServer);
         dbConnection();
         myServer.listen(8080, () => console.log(`Listening on port 8080`));
+        
     });
 }
 
