@@ -1,0 +1,58 @@
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+<div class="container">
+	<table id="cart" class="table table-hover table-condensed">
+						<tr>
+							<th style="width:50%">Product</th>
+							<th style="width:8%">Quantity</th>
+							<th style="width:8%">Price</th>
+							<th style="width:10%"></th>
+						</tr>
+					</thead>
+					<tbody>
+                        {{#each products}}
+						<tr>
+							<td data-th="Product">
+								<div class="row">
+									<div class="col-sm-10">
+										<h4 class="nomargin"></h4>
+										<p>{{this.result.name}}</p>
+									</div>
+								</div>
+							</td>
+							<td data-th="Quantity">
+								<div class="col-sm-10">
+										<h4 class="nomargin"></h4>
+										<p>{{this.amount}}</p>
+								</div>
+							</td>
+							<td data-th="Price">
+								<div class="col-sm-10">
+										<h4 class="nomargin"></h4>
+										<p>{{this.result.price}}</p>
+								</div>
+							</td>
+							<form action="/api/cart/delete/" method="POST">
+							<td class="actions" data-th="">
+								<button type="submit" value="{{this.result._id}}" name="productId" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></a></button>
+								<input type="number" name="productAmount">							
+							</td>
+							</form>
+						</tr>
+                        {{/each}}
+						
+					</tbody>
+					<tfoot>
+						<tr>
+							<td><a href="/api/vista" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
+							<td colspan="2" class="hidden-xs"></td>
+							<td><a href="/api/submit"<button class="btn btn-success btn-block">Checkout <i class="fa fa-angle-right"></i></a></td>
+						</tr>
+					</tfoot>
+				</table>
+		</form>
+</div>

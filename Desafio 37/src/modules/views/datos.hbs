@@ -1,0 +1,30 @@
+<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="well">
+    <ul class="nav nav-tabs">
+      <li class="active"><a href="#home" data-toggle="tab">Profile</a></li>
+      <li><a href="#profile" data-toggle="tab">Back</a></li>
+    </ul>
+    <div id="myTabContent" class="tab-content">
+      <div class="tab-pane active in" id="home">
+            <label>Username</label>
+            <h4 class="input-xlarge">{{user.username}}</h4>
+            <label>First Name</label>
+            <h4 class="input-xlarge">{{user.firstName}}</h4>
+            <label>Last Name</label>
+            <h4 class="input-xlarge">{{user.lastName}}</h4>
+            <label>Email</label>
+            <h4 class="input-xlarge">{{user.email}}</h4>
+            <label>Address</label>
+            <h4 class="input-xlarge">{{user.address}}</h4>
+            <label>Age</label>
+            <h4 class="input-xlarge">{{user.age}}</h4>
+            <label>Phone Number</label>
+            <h4 class="input-xlarge">{{user.phonenumber}}</h4>
+      </div>
+      <div class="tab-pane fade" id="profile">
+      </div>
+  </div>

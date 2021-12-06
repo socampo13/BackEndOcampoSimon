@@ -1,0 +1,14 @@
+<br />
+  <div class='alert alert-success alertaLogout' role='alert'>
+        <br>
+        <h2><i>Bienvenido {{user.username}}</i></h2>
+    <form action='/api/logout' method='POST' autocomplete='off'>
+      <button class='btn btn-warning' id='destroy' name='destroy'>Logout</button>
+    </form>
+     <button class='btn' id='cart' name='cart'><a href="/api/userCart">Cart</a></button>
+     <button class='btn' id='cart' name='user'><a href="/api/datos">Datos</a></button>
+  </div>
+<div class="flex-container">
+     <br>
+     {{> productlist}}
+</div>

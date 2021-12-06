@@ -1,0 +1,31 @@
+<div class="chat-messages" id="chat-messages">
+  <div class="message">
+    <div class="user-info">
+    <p class="meta">Usuario</p><span class="time-right">00:00</span>
+    </div>
+     <p class="text-msg">¿Qué tal?</p>
+  </div>
+</div>
+<div class="chat-form-container">
+      <form class="chat-form">
+        <input id="msg" type="text" placeholder="Enter Message" required autocomplete="off" />
+        <label for="email">Ingrese su email</label>
+        <input
+							type="email"
+							name="email"
+							id="email"
+							placeholder="Enter email..."
+							required
+		/>
+        <button onclick="sendMessage()" class="btn"><i class="fas fa-paper-plane"></i>Enviar</button>
+      </form>
+</div>
+ <script>  
+      const sendMessage = () => {
+           let msg = {
+               msg : document.getElementById('msg').value,
+               email : document.getElementById('email').value
+           }
+           socket.emit('new-message', msg );
+     }
+ </script>

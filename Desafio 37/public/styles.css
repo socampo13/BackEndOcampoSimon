@@ -1,0 +1,137 @@
+body {
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    background-color: rgb(77, 77, 77);
+}
+
+
+
+.form-list {
+    margin : 0 312px;
+    margin-top: 15px;
+    padding-right: 100px;
+    padding-top: 20px;
+    width: 420px;
+    padding-left: 100px;
+    background-color: honeydew;
+    border-radius: 3px;
+}
+
+.field {
+    width : 230px;
+    height: 30px;
+}
+.field:focus {
+    border-color: lavender;
+}
+li {
+    margin-bottom: 50px;
+}
+
+ul {
+    margin-top: 20px;
+    list-style-type: none;
+    padding: 0;
+}
+
+.btn {
+    background-color: #4CAF50; 
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+.center-content {
+    text-align: center;
+}
+
+
+
+
+.flex-container {
+    display: flex;
+    flex-direction: row;
+}
+
+
+
+.chat-messages {
+    padding: 30px;
+    width: 700px;
+    max-height: 500px;
+    overflow-y: scroll;
+    margin-left: 250px;
+    margin-top: 20px;
+    background-color: whitesmoke;
+}
+
+.chat-form-container {
+    padding: 30px;
+    width: 700px;
+    max-height: 500px;
+    margin-left: 250px;
+    margin-top: 20px;
+    background-color: whitesmoke;
+}
+
+.chat-form-container form {
+	display: flex;
+}
+
+.chat-form-container input[type='text'] {
+	font-size: 16px;
+	padding: 5px;
+	height: 40px;
+	flex: 1;
+}
+
+.chat-form {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.chat-form input {
+    margin-bottom: 10px;
+}
+
+.chat-messages .message {
+	padding: 10px;
+	margin-bottom: 15px;
+	background-color: var(--light-color);
+	border-radius: 5px;
+}
+
+.chat-messages .message .meta {
+    margin-right: 20px;
+	margin-bottom: 5px;
+	font-weight: bold;
+	color: blue;
+	opacity: 0.7;
+}
+
+.time-right {
+    color : brown;
+}
+
+
+.text-msg {
+    font-size: 20px;
+    font-family: Italic;
+    color : green;
+}
+
+
+.user-info {
+    display: flex;
+    flex-direction: row;
+}
+
+#cart {
+    margin-top: 12px;
+}

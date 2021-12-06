@@ -1,0 +1,31 @@
+<div class="container">
+  <h2 class='text-center mb-4'>Vista de productos</h2>	
+    <table class="table table-dark" id="lista">
+      <thead>
+        <tr>
+          <td class="text-center align-middle">Nombre</td>
+          <td class="text-center align-middle">Precio</td>
+          <td class="text-center align-middle">Descripción</td>
+          <td class="text-center align-middle">Imagen</td>
+          <td class="text-center align-middle">Cantidad</td>
+          <td class="text-center align-middle"></td>
+          <td class="text-center align-middle"></td>
+        </tr> 
+      </thead>
+      <tbody id="tbodyID">
+        {{#each products}}
+					<tr>
+						<td  class="text-center align-middle">{{this.name}}</td>
+						<td  class="text-center align-middle">{{this.price}}</td>
+            <td  class="text-center align-middle">{{this.description}}</td>
+            <td  class="text-center align-middle">{{this.thumbnail}}</td>
+            <form action="/api/cart/add" method="POST">
+            <td><input id="number" type="number" min="1" max="{{this.stock}}" name="productAmount"></td>
+            <td><input type="hidden" name="productId"  value="{{this._id}}" /></td>
+            <td class="text-center align-middle"><button class="btn" type="submit">Agregar</button></td>
+            </form>
+					</tr>
+				{{/each}}     
+      </tbody>
+    </table>   
+</div>
